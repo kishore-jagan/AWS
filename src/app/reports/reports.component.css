@@ -1,0 +1,124 @@
+.reports-container{
+    margin: 0;
+    padding-left: 6%;
+    display: flex;
+    flex-direction: row;
+}
+
+.filterContainer{
+    background-color: var(--background-color);
+    border-radius: 20px;
+    padding: 20px;
+    position: sticky;
+    width: 22%;
+    top: 0;
+    min-height: 100vh;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .filterContainer {
+        min-height: 22%;
+        height: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .filterContainer {
+        min-width: 30%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .filterContainer {
+        min-width: 45%;
+        height: auto;
+    }
+}
+
+.filterContainer h5{
+    color: var(--main-text);
+    padding-bottom: 30px;
+}
+
+.sensorssselect{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.AWS, .ECFS{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s color 0.3s;
+}
+svg{
+    height: 40px;
+    width: 40px;
+}
+.sensorssselect h1{
+    color: rgba(255, 255, 255, 0.775);
+}
+.selectOption{
+    background-color:  rgb(73, 104, 104);;
+}
+
+
+
+
+.tableMainCon{
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+}
+
+.tableContainer {
+width: 100%;
+max-width: 98%;
+overflow-y: auto;
+background-color: var(--background-color);
+color: var(--main-text);
+border-radius: 0px 10px 0px 10px;
+padding: 20px;
+}
+
+@media (max-width: 1200px) {
+    .tableContainer {
+      width: 100%; /* Adjust width for smaller screens */
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .tableContainer {
+      width: 100%;
+      min-width: 700px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tableContainer {
+      min-width: 600px;
+    }
+  }
+
+  label {
+    margin-bottom: 10px;
+    /* font-size: 28px;     */
+    /* color: white; */
+  }
+
+  

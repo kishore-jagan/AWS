@@ -1,0 +1,18 @@
+<div class="battery-container">
+    <div class="pin">
+        <div class="plus">
+            <p>-</p>
+        </div>
+        <div class="minus">
+            <p>+</p>
+        </div>
+    </div>
+
+    <div class="battery-shell">
+        <div class="battery-fill" [ngStyle]="{'height': fillHeight, 'background-color': batteryColor}"></div>
+    </div>
+
+    <div class="battery-level">
+        {{batteryLevel.toFixed(1)}} V
+    </div>
+</div>

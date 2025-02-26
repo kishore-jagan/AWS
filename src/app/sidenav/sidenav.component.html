@@ -1,0 +1,30 @@
+<div class="sidebar">
+    <ul class="nav-list">
+        <li>
+            <a [class.selected]="isPageSelected('Home')">
+                <i class="bx bx-home" (click)="onPageChange('Home')"></i>
+            <!-- <span class="links_name">Home</span> -->
+        </a>
+        <span class="tooltip">Home</span>
+        </li>
+        <li>
+            <a [class.selected]="isPageSelected('Dashboard')">
+                <i class="bx bx-grid-alt" (click)="onPageChange('Dashboard')"></i>
+            <!-- <span class="links_name">Dashboard</span> -->
+        </a>
+        <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+            <a [class.selected]="isPageSelected('Reports')">
+                <i class="bx bx-grid-alt" (click)="onPageChange('Reports')"></i>
+            </a>
+            <span class="tooltip">Reports</span>
+        </li>
+        <li>
+            <a [class.selected]="isPageSelected('Analytics')">
+                <i class="bx bx-globe" (click)="onPageChange('Analytics')"></i>
+            </a>
+            <span class="tooltip">Analytics</span>
+        </li>
+    </ul>
+</div>

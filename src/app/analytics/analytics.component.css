@@ -1,0 +1,143 @@
+.analytics-container{
+    margin: 0;
+    padding-left: 6%;
+    display: flex;
+    flex-direction: row;
+}
+
+.filterContainer{
+    background-color: var(--background-color);
+    border-radius: 20px;
+    padding: 20px;
+    position: sticky;
+    width: 22%;
+    top: 0;
+    min-height: 100vh;
+    height: 100%;
+    overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+    .filterContainer {
+        min-height: 22%;
+        height: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .filterContainer {
+        min-width: 30%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .filterContainer {
+        min-width: 45%;
+        height: auto;
+    }
+}
+
+.filterContainer h5{
+    color: var(--main-text);
+    padding-bottom: 30px;
+}
+
+.sensors{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.AWS, .ECFS{
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+    background-color: black;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s color 0.3s;
+}
+svg{
+    height: 40px;
+    width: 40px;
+}
+.sensors h1{
+    color: rgba(255, 255, 255, 0.775);
+}
+.selectOption{
+    background-color:  rgb(73, 104, 104);;
+}
+
+
+
+
+
+
+
+.chartMaincont{
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    overflow-y: auto;
+  }
+  
+  /* Flex-2: Charts Layout */
+  .chartsContainer {
+    /* flex: 8.2; */
+    width: 100%;
+    max-width: 98%;
+    height: auto; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--background-color);
+    color: var(--main-text);
+    border-radius: 20px;
+    margin: 0px 10px 0px 10px;
+    /* padding: 20px; */
+    min-height: 100vh;
+  }
+
+  @media (max-width: 1200px) {
+    .chartContainer {
+      min-width: 800px; /* Adjust width for smaller screens */
+      height: 100%;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .chartContainer {
+      min-width: 800px;
+      height: 100%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .chartContainer {
+      min-width: 800px; /* Full width on mobile */
+      height: 100%; /* Adjust height to content */
+    }
+  }
+  
+  .chartContainer {
+    /* background-color: rgb(0, 0, 0); */
+    background-color: var(--secbackground-color);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    margin: 20px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    flex: 1; 
+    min-height: 400px; 
+  }

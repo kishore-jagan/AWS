@@ -1,0 +1,22 @@
+<div class="maindiv">
+    <app-sidenav></app-sidenav>
+
+    <section>
+        @if(page == 'Home'){
+            <app-home-page></app-home-page>
+            <!-- <app-dashboard></app-dashboard> -->
+             <!-- <app-reports></app-reports> -->
+            <!-- <app-analytics></app-analytics> -->
+        }@else if (page == 'Dashboard') {    
+            <app-dashboard></app-dashboard>
+             <!-- <app-home-page></app-home-page> -->
+        }@else if (page == 'Reports') {
+           <app-reports></app-reports>
+        }@else if (page == 'Analytics'){     
+            <app-analytics></app-analytics>
+            <!-- <app-dashboard></app-dashboard> -->
+        }@else {
+            <app-home-page></app-home-page>
+        }
+    </section>
+</div>

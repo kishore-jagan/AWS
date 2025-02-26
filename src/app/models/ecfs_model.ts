@@ -1,0 +1,66 @@
+export interface EcfsData {
+  ecfs_id: number;
+  timestamp: string;
+  record: number;
+  co2_molar_li: number;
+  h2o_molar_li: number;
+  co2_ab_li: number;
+  h2o_ab_li: number;
+  press_li: number;
+  temp_li: number;
+  aux_li: number;
+  cooler_volt_li: number;
+  diagval_li: number;
+  out_bw_li: number;
+  pg_delay_li: number;
+  ux: number;
+  uy: number;
+  uz: number;
+  ts: number;
+  x_accel: number;
+  y_accel: number;
+  z_accel: number;
+  x_gyro: number;
+  y_gyro: number;
+  z_gyro: number;
+  x_mag: number;
+  y_mag: number;
+  z_mag: number;
+  ambient_pressure: number;
+  roll: number;
+  pitch: number;
+  yaw: number;
+  quaternion_q0: number;
+  quaternion_q1: number;
+  quaternion_q2: number;
+  quaternion_q3: number;
+  imu_gps_correl_timestamp_tow: number;
+  imu_gps_week_number: number;
+  imu_timestamp_flags: number;
+}
+
+export interface AwsData {
+  aws_id: number;
+  timestamp: string;
+  record: number;
+  winddir_uc: number;
+  ws: number;
+  winddir_cc: number;
+  ws_cc: number;
+  bp: number;
+  rh: number;
+  airtemp: number;
+  dp: number;
+  metsens_volts: number;
+  metsens_status: number;
+  rain_mm: number;
+  sbtempc: number;
+  targtempc: number;
+  pyr1_w_irr_tc: number;
+  pyr1_w_bodytemp: number;
+  pyr2_w_irr_tc: number;
+  pyr2_w_bodytemp: number;
+  long_rad_tc: number;
+  gps_lat: number;
+  gps_lon: number;
+}

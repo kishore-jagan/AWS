@@ -1,0 +1,32 @@
+Angular - 18.2.6
+Node.js - v20.17.0
+Docker  - 27.2.0, build 3ab4256
+
+Microsoft SQL Server 2022 (RTM-CU17) (KB5048038) - 16.0.4175.1 (X64)  	Dec 13 2024 09:01:53  	Copyright (C) 2022 Microsoft Corporation 	Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
+Server version: Apache/2.4.62 (Win64)
+
+Apache Lounge VS17 Server built:   Sep  4 2024 10:31:52
+
+
+ "dependencies": {
+    "@angular/animations": "^18.2.0",
+    "@angular/common": "^18.2.0",
+    "@angular/compiler": "^18.2.0",
+    "@angular/core": "^18.2.0",
+    "@angular/forms": "^18.2.0",
+    "@angular/platform-browser": "^18.2.0",
+    "@angular/platform-browser-dynamic": "^18.2.0",
+    "@angular/platform-server": "^18.2.0",
+    "@angular/router": "^18.2.0",
+    "@angular/ssr": "^18.2.6",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "ol": "^10.3.1",
+    "pg": "^8.13.1",
+    "pg-hstore": "^2.3.4",
+    "rxjs": "~7.8.0",
+    "sequelize": "^6.37.5",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.10"
+  },
