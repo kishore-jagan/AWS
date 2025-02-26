@@ -1,48 +1,85 @@
 .reports-container{
-    margin: 0;
-    padding-left: 6%;
+    /* margin: 0; */
+    margin-left: 6%;
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+    width: 94%;
+    /* background-color: aliceblue; */
 }
-
+ 
 .filterContainer{
     background-color: var(--background-color);
     border-radius: 20px;
     padding: 20px;
-    position: sticky;
-    width: 22%;
-    top: 0;
-    min-height: 100vh;
-    height: 100%;
-    overflow-y: auto;
+    /* position: sticky; */
+    /* width: 22%; */
+    /* top: 0; */
+    
+    /* min-height: 100vh; */
+    height: 100vh;
+    width: 19.8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: left;
+    /* overflow-y: auto; */
 }
-
-@media (max-width: 1200px) {
+ 
+.filterContainer h5{
+    font-size: 22px;
+    color: var(--main-text);
+}
+.filterContainer h3{
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--main-text);
+}
+.filterContainer label{
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--main-text);
+}
+.tableContainer label h5{
+    font-size: 20px;
+    font-weight:300;
+    color: var(--main-text);
+}
+ 
+.tableee{
+    height: 100%;
+    width: 79.8%;
+    
+    /* background-color: aqua; */
+}
+/* @media (max-width: 1200px) {
     .filterContainer {
         min-height: 22%;
         height: auto;
     }
 }
-
+ 
 @media (max-width: 992px) {
     .filterContainer {
         min-width: 30%;
         height: auto;
     }
 }
-
+ 
 @media (max-width: 768px) {
     .filterContainer {
         min-width: 45%;
         height: auto;
     }
-}
-
+} */
+ 
 .filterContainer h5{
     color: var(--main-text);
     padding-bottom: 30px;
 }
-
+ 
 .sensorssselect{
     height: 100px;
     width: 100%;
@@ -51,7 +88,7 @@
     justify-content: space-evenly;
     align-items: center;
 }
-
+ 
 .AWS, .ECFS{
     height: 80px;
     width: 80px;
@@ -75,27 +112,27 @@ svg{
 .selectOption{
     background-color:  rgb(73, 104, 104);;
 }
-
-
-
-
-.tableMainCon{
+ 
+ 
+ 
+ 
+.tableMaincon{
     height: 100vh;
     width: 100%;
-    max-width: 100%;
+    /* max-width: 70%; */
     overflow-y: auto;
 }
-
+ 
 .tableContainer {
 width: 100%;
-max-width: 98%;
+max-width: 100%;
 overflow-y: auto;
 background-color: var(--background-color);
 color: var(--main-text);
-border-radius: 0px 10px 0px 10px;
+border-radius: 10px 10px 10px 10px;
 padding: 20px;
 }
-
+ 
 @media (max-width: 1200px) {
     .tableContainer {
       width: 100%; /* Adjust width for smaller screens */
@@ -114,11 +151,116 @@ padding: 20px;
       min-width: 600px;
     }
   }
-
+ 
   label {
     margin-bottom: 10px;
     /* font-size: 28px;     */
     /* color: white; */
   }
+ 
+  .periodWise{
+    height: 50%;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* background-color: aqua; */
+  }
+ 
+  .field{
+    width: 100%;
+    height: 20%;
+ 
+  }
+  .field p-select{
+    width: 100%;
+    height: 40px;
+    border-radius: 15px;
+   
+    color: var(--main-text);
+    background-color: black;
 
-  
+  }
+  ::ng-deep p-select .p-select-label{
+    color: var(--main-text) !important;
+  }
+  ::ng-deep .p-inputtext{
+    border-radius: 15px !important;
+    background-color: black !important;
+    color: var(--main-text) !important;
+
+  }
+ 
+  .full-width{
+    display: flex;
+    flex-direction: column;
+  }
+.field-button{
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+  .field-button button{
+    height: 35px;
+    width: 60%;
+    border-radius: 10px;
+ 
+  }.caption{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .multidrop{
+    width: 100% !important;
+  }
+  .headerFilter{
+    width: 40%;
+ 
+    /* background-color: antiquewhite; */
+  }
+  ::ng-deep .multidrop{
+    max-width: 400px !important;
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+  }
+  ::ng-deep .p-datatable-header{
+    border-radius: 10px 10px 0px 0px;
+  }
+  #search input{
+    height: 40px;
+    max-width: 300px;
+    width: 200px;
+    border-radius: 6px;
+    padding-left:5px;
+    background-color: var(--background-color);
+    color: var(--main-text) !important;
+ 
+  }
+ ::ng-deep .p-datatable-thead{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--background-color) !important;
+ } 
+ ::ng-deep .p-multiselect-chip{
+    background-color: grey !important;
+    color: var(--main-text) !important;
+ }
+
+ ::ng-deep .p-datatable-header{
+    background-color: var(--background-color) !important;
+ }
+ ::ng-deep .p-datatable-thead th{
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+ }
+ ::ng-deep .p-datatable-tbody td{
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+    border-color: rgba(174, 174, 174, 0.186) !important;
+ }
+
+ ::ng-deep .p-paginator{
+    background-color: var(--background-color) !important;
+ }

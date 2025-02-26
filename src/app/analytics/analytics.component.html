@@ -160,6 +160,12 @@
 
     <div class="chartMaincont">
         <div class="chartsContainer">
+
+            <div class="chartContainer">
+                <div id="surfacepolar" class="chart-diagram" style="width: 100%; height: 90vh;"></div>
+            </div>
+
+            
             <div *ngFor="let key of ['winddir_uc',
             'ws',
             'winddir_cc',
@@ -180,6 +186,8 @@
             'long_rad_tc']" class="chartContainer">
                 <div [id]="'chart-' + key" style="width: 100%; height: 400px;"></div>
               </div>
+
+            
             
         </div>
     </div>

@@ -1,63 +1,63 @@
 <div class="reports-container">
-
+ 
     <div class="filterContainer">
         <label>
             <h5>Reports</h5>
         </label>
-
+ 
         <div class="sensorssselect">
             <div class="AWS" [ngClass]="{'selectOption': selectedStation === 'AWS'}"
-            (click)="selectStationoption('AWS')">
-            <svg id="AWS-Sensor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
-                <defs>
-                    <style>
-                        .cls-1 {
-                            fill: none;
-                            stroke: #1ee1ff;
-                            stroke-linecap: round;
-                            stroke-linejoin: round;
-                            stroke-width: 4px;
-                        }
-            
-                        .cls-2 {
-                            fill: #1ff2f2;
-                            stroke: #ffffff;
-                            stroke-width: 2px;
-                        }
-                    </style>
-                </defs>
-            
-                <!-- Main Sensor Unit -->
-                <rect class="cls-2" x="45" y="60" width="40" height="30" rx="5" ry="5"/>
-                
-                <!-- Antenna -->
-                <line class="cls-1" x1="65" y1="60" x2="65" y2="30"/>
-                <circle class="cls-2" cx="65" cy="25" r="5"/>
-                
-                <!-- Wind Vane -->
-                <line class="cls-1" x1="95" y1="50" x2="110" y2="50"/>
-                <polygon class="cls-2" points="110,45 115,50 110,55"/>
-                
-                <!-- Anemometer (Wind Speed Sensor) -->
-                <line class="cls-1" x1="95" y1="60" x2="110" y2="60"/>
-                <circle class="cls-2" cx="110" cy="55" r="3"/>
-                <circle class="cls-2" cx="110" cy="65" r="3"/>
-                
-                <!-- Temperature/Humidity Sensor -->
-                <circle class="cls-2" cx="40" cy="75" r="5"/>
-                
-                <!-- Solar Panel -->
-                <polygon class="cls-2" points="45,50 85,50 75,40 55,40"/>
-                
-                <!-- Ground Stand -->
-                <line class="cls-1" x1="65" y1="90" x2="65" y2="120"/>
-                <line class="cls-1" x1="50" y1="120" x2="80" y2="120"/>
-            
-            </svg>            
-            <h1>AWS</h1>
-        </div>
-
-        <div class="ECFS" [ngClass]="{'selectOption' :selectedStation === 'ECFS' }"
+                (click)="selectStationoption('AWS')">
+                <svg id="AWS-Sensor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
+                    <defs>
+                        <style>
+                            .cls-1 {
+                                fill: none;
+                                stroke: #1ee1ff;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-width: 4px;
+                            }
+ 
+                            .cls-2 {
+                                fill: #1ff2f2;
+                                stroke: #ffffff;
+                                stroke-width: 2px;
+                            }
+                        </style>
+                    </defs>
+ 
+                    <!-- Main Sensor Unit -->
+                    <rect class="cls-2" x="45" y="60" width="40" height="30" rx="5" ry="5" />
+ 
+                    <!-- Antenna -->
+                    <line class="cls-1" x1="65" y1="60" x2="65" y2="30" />
+                    <circle class="cls-2" cx="65" cy="25" r="5" />
+ 
+                    <!-- Wind Vane -->
+                    <line class="cls-1" x1="95" y1="50" x2="110" y2="50" />
+                    <polygon class="cls-2" points="110,45 115,50 110,55" />
+ 
+                    <!-- Anemometer (Wind Speed Sensor) -->
+                    <line class="cls-1" x1="95" y1="60" x2="110" y2="60" />
+                    <circle class="cls-2" cx="110" cy="55" r="3" />
+                    <circle class="cls-2" cx="110" cy="65" r="3" />
+ 
+                    <!-- Temperature/Humidity Sensor -->
+                    <circle class="cls-2" cx="40" cy="75" r="5" />
+ 
+                    <!-- Solar Panel -->
+                    <polygon class="cls-2" points="45,50 85,50 75,40 55,40" />
+ 
+                    <!-- Ground Stand -->
+                    <line class="cls-1" x1="65" y1="90" x2="65" y2="120" />
+                    <line class="cls-1" x1="50" y1="120" x2="80" y2="120" />
+ 
+                </svg>
+                <h1>AWS</h1>
+            </div>
+ 
+            <div class="ECFS" [ngClass]="{'selectOption' :selectedStation === 'ECFS' }"
                 (click)="selectStationoption('ECFS')">
                 <svg id="ECFS-Sensor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130">
                     <defs>
@@ -69,7 +69,7 @@
                                 stroke-linejoin: round;
                                 stroke-width: 4px;
                             }
-                
+ 
                             .cls-2 {
                                 fill: #1ff2f2;
                                 stroke: #ffffff;
@@ -77,153 +77,135 @@
                             }
                         </style>
                     </defs>
-                
+ 
                     <!-- Main Sensor Unit -->
-                    <rect class="cls-2" x="45" y="65" width="40" height="30" rx="5" ry="5"/>
-                
+                    <rect class="cls-2" x="45" y="65" width="40" height="30" rx="5" ry="5" />
+ 
                     <!-- Antenna -->
-                    <line class="cls-1" x1="65" y1="65" x2="65" y2="35"/>
-                    <circle class="cls-2" cx="65" cy="30" r="5"/>
-                
+                    <line class="cls-1" x1="65" y1="65" x2="65" y2="35" />
+                    <circle class="cls-2" cx="65" cy="30" r="5" />
+ 
                     <!-- Wind Vane (Direction) -->
-                    <line class="cls-1" x1="100" y1="50" x2="115" y2="50"/>
-                    <polygon class="cls-2" points="115,45 120,50 115,55"/>
-                
+                    <line class="cls-1" x1="100" y1="50" x2="115" y2="50" />
+                    <polygon class="cls-2" points="115,45 120,50 115,55" />
+ 
                     <!-- Anemometer (Wind Speed) -->
-                    <line class="cls-1" x1="100" y1="60" x2="115" y2="60"/>
-                    <circle class="cls-2" cx="115" cy="55" r="3"/>
-                    <circle class="cls-2" cx="115" cy="65" r="3"/>
-                
+                    <line class="cls-1" x1="100" y1="60" x2="115" y2="60" />
+                    <circle class="cls-2" cx="115" cy="55" r="3" />
+                    <circle class="cls-2" cx="115" cy="65" r="3" />
+ 
                     <!-- Rain Gauge -->
-                    <rect class="cls-2" x="50" y="45" width="30" height="10" rx="2" ry="2"/>
-                
+                    <rect class="cls-2" x="50" y="45" width="30" height="10" rx="2" ry="2" />
+ 
                     <!-- Temperature & Humidity Sensor -->
-                    <circle class="cls-2" cx="40" cy="80" r="5"/>
-                
+                    <circle class="cls-2" cx="40" cy="80" r="5" />
+ 
                     <!-- Solar Panel -->
-                    <polygon class="cls-2" points="45,55 85,55 75,45 55,45"/>
-                
+                    <polygon class="cls-2" points="45,55 85,55 75,45 55,45" />
+ 
                     <!-- Ground Stand -->
-                    <line class="cls-1" x1="65" y1="95" x2="65" y2="120"/>
-                    <line class="cls-1" x1="50" y1="120" x2="80" y2="120"/>
-                
-                </svg>                
+                    <line class="cls-1" x1="65" y1="95" x2="65" y2="120" />
+                    <line class="cls-1" x1="50" y1="120" x2="80" y2="120" />
+ 
+                </svg>
                 <h1>ECFS</h1>
             </div>
         </div>
-
+ 
         <div class="periodWise">
             <div class="field">
                 <label for="period">
                     <h3>Period Select</h3>
                 </label>
                 <p-select class="dateDrop" [options]="periodOptions" [(ngModel)]="selectedPeriod"
-                (onChange)="onPeriodChange($event)" placeholder="Select a Period"></p-select>
+                    (onChange)="onPeriodChange($event)" placeholder="Select a Period"></p-select>
             </div>
-
+ 
             <div class="full-width" *ngIf="selectedPeriod === 'dateRange'">
                 <label for="fromDate">From Date</label>
-                <p-datePicker  [(ngModel)]="fromDate" id="fromDate" dateFormat="dd/mm/yy"
-                class="full-width custom-calender" [showTime]="true" hourFormat="24"></p-datePicker >
-
+                <p-datePicker [(ngModel)]="fromDate" id="fromDate" dateFormat="dd/mm/yy"
+                    class="full-width custom-calender" [showTime]="true" hourFormat="24"></p-datePicker>
+ 
                 <label for="toDate"> To Date</label>
-                <p-datePicker  [(ngModel)]="toDate" id="toDate" dateFormat="dd/mm/yy"
-                class="full-width custom-calender" [showTime]="true" hourFormat="24"></p-datePicker >
+                <p-datePicker [(ngModel)]="toDate" id="toDate" dateFormat="dd/mm/yy" class="full-width custom-calender"
+                    [showTime]="true" hourFormat="24"></p-datePicker>
             </div>
-
+ 
             <div class="full-width" *ngIf="selectedPeriod === 'weekRange'">
                 <label for="week">Select Week Start Date</label>
-                <p-datePicker  [(ngModel)]="selectedWeek" id="week" dateFormat="dd/mm/yy"
-                class="full-width custom-calender"></p-datePicker >
+                <p-datePicker [(ngModel)]="selectedWeek" id="week" dateFormat="dd/mm/yy"
+                    class="full-width custom-calender"></p-datePicker>
             </div>
-
+ 
             <div class="full-width" *ngIf="selectedPeriod === 'monthRange'">
                 <label for="month">Select Month</label>
-                <p-datePicker  [(ngModel)]="selectedMonth" id="month" view="month" dateFormat="mm/yy"
-                    class="full-width custom-calendar"></p-datePicker >
+                <p-datePicker [(ngModel)]="selectedMonth" id="month" view="month" dateFormat="mm/yy"
+                    class="full-width custom-calendar"></p-datePicker>
             </div>
-
+ 
             <div class="full-width" *ngIf="selectedPeriod === 'yearRange'">
                 <label for="year">Select Year</label>
                 <p-datePicker [(ngModel)]="selectedYear" id="year" view="year" dateFormat="yy"
                     class="full-width custom-calendar"></p-datePicker>
             </div>
-
-            <div class="field">
+            <div class="field-button">
                 <button class="submit" (click)="onSubmit()">Submit</button>
             </div>
-
+ 
+ 
         </div>
     </div>
-
-@if (loading === false) {
-
-}
-    <div class="tableMaincon" *ngIf="loading">
-        <div class="tableContainer" *ngIf="selectedStation">
-            <label>
-                <h5>{{selectedStation | uppercase}}</h5>
-            </label>
-
-            <p-table rowHover="true" #dt2 [columns]="selectedColumns" [value]="selectedStation === 'ECFS' ? ecfs : selectedStation === 'AWS' ? aws : ecfs"  
-            paginator="true" [rows]="10" [rowsPerPageOptions]="[10, 15, 20]" showCurrentPageReport="true"
-                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-                [tableStyle]="{ 'min-width': '80rem' }" responsiveLayout="stack" [breakpoint]="'960px'"
-                styleClass="p-datatable-striped">
-
+    <div class="tableee">
+        <div class="tableMaincon" *ngIf="loading">
+            <div class="tableContainer" *ngIf="selectedStation">
+                <label>
+                    <h5>{{selectedStation | uppercase}}</h5>
+                </label>
+ 
+                <p-table rowHover="true" #dt2 [columns]="selectedColumns"
+                    [value]="selectedStation === 'ECFS' ? ecfs : selectedStation === 'AWS' ? aws : ecfs"
+                    paginator="true" [rows]="10" [rowsPerPageOptions]="[10, 15, 20]" showCurrentPageReport="true"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+                    [tableStyle]="{ 'min-width': '80rem' }" responsiveLayout="stack" [breakpoint]="'960px'"
+                    styleClass="p-datatable-striped" [scrollable]="true" scrollHeight="580px" >
+ 
                     <ng-template pTemplate="caption">
                         <div class="caption">
                             <div id="search">
                                 <input type="search" placeholder="Search">
                             </div>
-    
+ 
                             <div class="headerFilter">
                                 <p-multiSelect class="multidrop" showHeader="false" display="chip" [options]="cols"
                                     [(ngModel)]="selectedColumns" optionLabel="header"
                                     selectedItemsLabel="{0} columns selected" [style]="{'max-width': '200px'}"
                                     placeholder="Choose Columns" />
-    
-                                <!-- <p-dropdown class="export" placeholder="Export">
-                                    <ng-template let-option pTemplate="selectedItem">
-                                        <span>{{ option.label }}</span>
-                                    </ng-template>
-                                </p-dropdown> -->
+ 
+ 
                             </div>
                         </div>
                     </ng-template>
-
+ 
                     <ng-template pTemplate="header" let-columns>
-                    <tr>
-                        <!-- <th pSortableColumn="ecfs_id">ID <p-sortIcon field="ecfs_id"></p-sortIcon></th>
-                        <th pSortableColumn="timestamp">Timestamp <p-sortIcon field="timestamp"></p-sortIcon></th>
-                        <th pSortableColumn="record">Record <p-sortIcon field="record"></p-sortIcon></th>
-                        <th pSortableColumn="co2_molar_li">CO2 Molar Li <p-sortIcon field="co2_molar_li"></p-sortIcon></th>
-                        <th pSortableColumn="h2o_molar_li">H2O Molar Li <p-sortIcon field="h2o_molar_li"></p-sortIcon></th>
-                        <th pSortableColumn="press_li">Pressure Li <p-sortIcon field="press_li"></p-sortIcon></th>
-                        <th pSortableColumn="temp_li">Temperature Li <p-sortIcon field="temp_li"></p-sortIcon></th>
-                        <th pSortableColumn="ambient_pressure">Ambient Pressure <p-sortIcon field="ambient_pressure"></p-sortIcon></th> -->
-                        <th *ngFor="let col of columns" pSortableColumn="{{col.field}}">
-                            {{col.header}} <p-sortIcon field="{{col.field}}"></p-sortIcon>
-                        </th>
-                      </tr>
-                </ng-template>
-
-                <ng-template pTemplate="body" let-rowData let-columns="columns">
-                    <tr>
-                        <!-- <td>{{ rowData.ecfs_id }}</td>
-                        <td>{{ rowData.timestamp | date:'yyyy-MM-dd HH:mm:ss' }}</td>
-                        <td>{{ rowData.record }}</td>
-                        <td>{{ rowData.co2_molar_li }}</td>
-                        <td>{{ rowData.h2o_molar_li }}</td>
-                        <td>{{ rowData.press_li }}</td>
-                        <td>{{ rowData.temp_li }}</td>
-                        <td>{{ rowData.ambient_pressure }}</td> -->
-                        <td *ngFor="let col of columns">
-                            {{rowData[col.field]}}
-                        </td>
-                      </tr>
-                </ng-template>
-            </p-table>
+                        <tr>
+                            <th *ngFor="let col of columns" pSortableColumn="{{col.field}}">
+                                {{col.header}} <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                            </th>
+                        </tr>
+                    </ng-template>
+ 
+                    <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+ 
+                            <td *ngFor="let col of columns">
+                                {{rowData[col.field]}}
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
         </div>
     </div>
+    <!--  -->
 </div>
+ 

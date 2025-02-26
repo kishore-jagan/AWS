@@ -25,6 +25,8 @@ import { BatteryComponent } from '../battery/battery.component';
 import { interval, pipe, Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import Overlay from 'ol/Overlay';
+import { DirectionComponent } from './direction/direction.component';
+import { SpeedComponent } from './speed/speed.component';
 
 interface listModel {
   name: string;
@@ -34,15 +36,22 @@ interface listModel {
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, FormsModule, BatteryComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    BatteryComponent,
+    DirectionComponent,
+    SpeedComponent,
+  ],
   templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css',
+  styleUrl: './dashboard2.component.css',
   providers: [DatePipe],
 })
 export class DashboardComponent implements OnInit {
   private platformId = inject(PLATFORM_ID);
   isBrowser: boolean = false;
   map!: Map;
+  speed: number = 2;
   latLong: [number, number] = fromLonLat([80.2705, 13.0843]) as [
     number,
     number
@@ -51,7 +60,7 @@ export class DashboardComponent implements OnInit {
   overlay!: Overlay;
   popupContent: string = '';
 
-  sensorList: string[] = ['AWS', 'ECFS'];
+  sensorList: string[] = ['ECFS', 'AWS'];
   sensorSelect: string = this.sensorList[0];
 
   isECFSSelected: boolean = true;
@@ -82,129 +91,129 @@ export class DashboardComponent implements OnInit {
   assignecfslist() {
     const list = [
       {
-        name: 'co2_molar_li',
+        name: 'Carbon Dioxide Molar Concentration (LI-COR)',
         value: this.ecfslastRow!.co2_molar_li.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/co2molar.svg',
       },
       {
-        name: 'H2O_molar_li',
+        name: 'Water Vapor Molar Concentration (LI-COR)',
         value: this.ecfslastRow!.h2o_molar_li.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/water.svg',
       },
       {
-        name: 'CO2_Ab_li',
+        name: 'Carbon Dioxide Absorption (LI-COR)',
         value: this.ecfslastRow!.co2_ab_li.toString(),
-        img: '../../assets/svg/admin_setting.svg',
+        img: '../../assets/ecfs/co2molar.svg',
       },
       {
-        name: 'H2O_Ab_li',
+        name: 'Water Vapor Absorption (LI-COR)',
         value: this.ecfslastRow!.h2o_ab_li.toString(),
-        img: '../../assets/svg/level.svg',
+        img: '../../assets/ecfs/water.svg',
       },
       {
-        name: 'Press_li',
+        name: 'Pressure (LI-COR)',
         value: this.ecfslastRow!.press_li.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/pressure.svg',
       },
       {
-        name: 'Temperature_li',
+        name: 'Temperature (LI-COR)',
         value: this.ecfslastRow!.temp_li.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/temperture.svg',
       },
       {
-        name: 'Aux_li',
+        name: 'Auxiliary Data (LI-COR)',
         value: this.ecfslastRow!.aux_li.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/auxilarydata.svg',
       },
       {
-        name: 'Ux',
+        name: 'Wind Velocity Component in X-Direction',
         value: this.ecfslastRow!.ux.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/windsp.svg',
       },
       {
-        name: 'Uy',
+        name: 'Wind Velocity Component in Y-Direction',
         value: this.ecfslastRow!.uy.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/windsp.svg',
       },
       {
-        name: 'Uz',
+        name: 'Wind Velocity Component in Z-Direction',
         value: this.ecfslastRow!.uz.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/windsp.svg',
       },
       {
-        name: 'TS',
+        name: 'Sonic Temperature',
         value: this.ecfslastRow!.ts.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/solar.svg',
       },
       {
-        name: 'XAccel',
+        name: 'Acceleration in X-Direction',
         value: this.ecfslastRow!.x_accel.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/wind direction.svg',
       },
       {
-        name: 'YAccel',
+        name: 'Acceleration in Y-Direction',
         value: this.ecfslastRow!.y_accel.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/wind direction.svg',
       },
       {
-        name: 'ZAccel',
+        name: 'Acceleration in Z-Direction',
         value: this.ecfslastRow!.z_accel.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/wind direction.svg',
       },
       {
-        name: 'XGyro',
+        name: 'Gyroscope Measurement in X-Axis',
         value: this.ecfslastRow!.x_gyro.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/gyroscope.svg',
       },
       {
-        name: 'YGyro',
+        name: 'Gyroscope Measurement in Y-Axis',
         value: this.ecfslastRow!.y_gyro.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/gyroscope.svg',
       },
       {
-        name: 'ZGyro',
+        name: 'Gyroscope Measurement in Z-Axis',
         value: this.ecfslastRow!.z_gyro.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/gyroscope.svg',
       },
       {
-        name: 'XMag',
+        name: 'Magnetic Field in X-Direction',
         value: this.ecfslastRow!.x_mag.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/magnetic.svg',
       },
       {
-        name: 'YMag',
+        name: 'Magnetic Field in Y-Direction',
         value: this.ecfslastRow!.y_mag.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/magnetic.svg',
       },
       {
-        name: 'ZMag',
+        name: 'Magnetic Field in Z-Direction',
         value: this.ecfslastRow!.z_mag.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/magnetic.svg',
       },
       {
         name: 'Ambient Pressure',
         value: this.ecfslastRow!.ambient_pressure.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/ecfs/pressure.svg',
       },
       {
         name: 'Roll',
         value: this.ecfslastRow!.roll.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/svg/meter.svg',
       },
       {
         name: 'Pitch',
         value: this.ecfslastRow!.pitch.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/svg/level.svg',
       },
       {
         name: 'Yaw',
         value: this.ecfslastRow!.yaw.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/svg/o2.svg',
       },
       {
         name: 'IMU',
         value: this.ecfslastRow!.imu_timestamp_flags.toString(),
-        img: '../../assets/svg/leaf.svg',
+        img: '../../assets/svg/meter.svg',
       },
     ];
 
@@ -215,104 +224,104 @@ export class DashboardComponent implements OnInit {
   assignawsList() {
     const list = [
       {
-        name: 'Winddir_uc',
+        name: 'Wind Direction uc',
         value: this.awslastRow!.winddir_uc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/wind direction.svg',
       },
       {
-        name: 'Ws',
+        name: 'Wind Speed uc',
         value: this.awslastRow!.ws.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/windsp.svg',
       },
       {
-        name: 'Winddir_cc',
+        name: 'Wind Dirrection cc',
         value: this.awslastRow!.winddir_cc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/wind direction.svg',
       },
       {
-        name: 'Ws_cc',
+        name: 'Wind Speed cc',
         value: this.awslastRow!.ws_cc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/windsp.svg',
       },
       {
-        name: 'Bp',
+        name: 'Barometric Pressure',
         value: this.awslastRow!.bp.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/barometric.svg',
       },
       {
-        name: 'Rh',
+        name: 'Relative Humidity',
         value: this.awslastRow!.rh.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/humid.svg',
       },
       {
-        name: 'Airtemp',
+        name: 'Air Temperature',
         value: this.awslastRow!.airtemp.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/relativehumidity.svg',
       },
       {
-        name: 'dp',
+        name: 'Dew Point Temperature',
         value: this.awslastRow!.dp.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/point.svg',
       },
       {
-        name: 'Metsens_volts',
+        name: 'Meteorological Sensor Voltage',
         value: this.awslastRow!.metsens_volts.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/coolervoltage.svg',
       },
       {
-        name: 'Metsons_status',
+        name: 'Meteorological Sensor Status',
         value: this.awslastRow!.metsens_status.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/status.svg',
       },
       {
-        name: 'Rain_mm',
+        name: 'Rainfall (in millimeters)',
         value: this.awslastRow!.rain_mm.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/rain.svg',
       },
       {
-        name: 'Sbtempc',
+        name: 'Sensor Body Temperature (Celsius)',
         value: this.awslastRow!.sbtempc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/temperture.svg',
       },
       {
-        name: 'Targtempc',
+        name: 'Target Temperature (Celsius)',
         value: this.awslastRow!.targtempc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/temperture.svg',
       },
       {
-        name: 'Pyr1_w_irr_tc',
+        name: 'Pyranometer 1 Wideband Irradiance (Thermocouple Corrected)',
         value: this.awslastRow!.pyr1_w_irr_tc.toString(),
         img: '../../assets/svg/meter.svg',
       },
       {
-        name: 'Pyr1_w_bodytemp',
+        name: 'Pyranometer 1 Wideband Body Temperature',
         value: this.awslastRow!.pyr1_w_bodytemp.toString(),
         img: '../../assets/svg/meter.svg',
       },
       {
-        name: 'Pyr2_w_irr_tc',
+        name: 'Pyranometer 2 Wideband Irradiance (Thermocouple Corrected)',
         value: this.awslastRow!.pyr2_w_irr_tc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/svg/level.svg',
       },
       {
-        name: 'Pyr2_w_bodytemp',
+        name: 'Pyranometer 2 Wideband Body Temperature',
         value: this.awslastRow!.pyr2_w_bodytemp.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/svg/level.svg',
       },
       {
-        name: 'Long_rad_tc',
+        name: 'Longwave Radiation (Thermocouple Corrected)',
         value: this.awslastRow!.long_rad_tc.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/ecfs/solar.svg',
       },
       {
-        name: 'Gps_lat',
+        name: 'GPS - Latitude',
         value: this.awslastRow!.gps_lat.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/aws/map.svg',
       },
       {
-        name: 'Gps_lon',
+        name: 'GPS - Longitude',
         value: this.awslastRow!.gps_lon.toString(),
-        img: '../../assets/svg/meter.svg',
+        img: '../../assets/aws/map.svg',
       },
     ];
     // console.log('awslist', list);
@@ -361,6 +370,39 @@ export class DashboardComponent implements OnInit {
     );
   }
 
+  buoyLocations = [
+    {
+      name: 'ECFS_Ship',
+      coordinates: [82.26975, 13.00475],
+      description: 'ECFS SHIP',
+      img: 'assets/Sagar_Nidhi.png',
+    },
+    {
+      name: 'AWS 2',
+      coordinates: [76.9558, 11.0168],
+      description: 'Weather Station 2',
+      img: 'assets/aws/aws1.svg',
+    },
+    {
+      name: 'AWS 3',
+      coordinates: [78.7047, 10.7905],
+      description: 'Weather Station 3',
+      img: 'assets/aws/aws1.svg',
+    },
+    {
+      name: 'AWS 4',
+      coordinates: [77.5946, 12.9716],
+      description: 'Weather Station 4',
+      img: 'assets/aws/aws1.svg',
+    },
+    {
+      name: 'AWS 5',
+      coordinates: [78.4772, 17.4065],
+      description: 'Weather Station 5',
+      img: 'assets/aws/aws1.svg',
+    },
+  ];
+
   mapInit() {
     const mapContainer = document.getElementById('map1');
 
@@ -369,47 +411,8 @@ export class DashboardComponent implements OnInit {
       return;
     }
 
-    const iconFeature = new Feature({
-      geometry: new Point(this.latLong),
-    });
-
-    // const circleFeature = new Feature({
-    //   geometry: new circleGeom(this.latLong, 40000),
-    // });
-
-    iconFeature.setStyle(
-      new Style({
-        image: new Icon({
-          // src: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
-          src: 'assets/awsimage-removebg-preview.png',
-          scale: 1.2,
-        }),
-        text: new Text({
-          // text: 'Bouy 1',
-          font: '12px Arial, sans-serif', // Font style
-          fill: new Fill({ color: '#000' }), // Text color
-          stroke: new Stroke({ color: '#fff', width: 2 }), // Outline for better visibility
-          offsetY: -20, // Offset the text above the icon
-        }),
-      })
-    );
-
-    // circleFeature.setStyle(
-    //   new Style({
-    //     fill: new Fill({ color: '#fff' }),
-    //     stroke: new Stroke({ color: '#000', width: 2 }),
-    //   })
-    // );
-
-    const vectorSource = new VectorSource({
-      features: [iconFeature],
-    });
-
-    const vectorLayer = new VectorLayer({
-      source: vectorSource,
-      style: new Style({
-        fill: new Fill({ color: 'rgba(0, 149, 255, 0.5)' }), // Custom water color
-      }),
+    this.vectorLayer = new VectorLayer({
+      source: new VectorSource(),
     });
 
     this.map = new Map({
@@ -423,12 +426,61 @@ export class DashboardComponent implements OnInit {
             // url: 'https://{a-c}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
           }),
         }),
-        vectorLayer,
+        this.vectorLayer,
       ],
       view: new View({
         center: this.latLong,
         zoom: 5,
       }),
     });
+    this.updateMarkers();
+  }
+
+  updateMarkers() {
+    const vectorSource = new VectorSource();
+    let filteredLocations = [];
+
+    // Filter based on selected sensor
+    if (this.sensorSelect === 'ECFS') {
+      filteredLocations = this.buoyLocations.filter(
+        (loc) => loc.name === 'ECFS_Ship'
+      );
+    } else {
+      filteredLocations = this.buoyLocations.filter(
+        (loc) => loc.name !== 'ECFS_Ship'
+      );
+    }
+
+    // Add features dynamically
+    filteredLocations.forEach((buoy) => {
+      const iconFeature = new Feature({
+        geometry: new Point(fromLonLat(buoy.coordinates)),
+        name: buoy.name,
+        description: buoy.description,
+      });
+
+      iconFeature.setStyle(
+        new Style({
+          image: new Icon({
+            src: buoy.img,
+            scale: 0.2,
+          }),
+          text: new Text({
+            font: '12px Arial, sans-serif',
+            fill: new Fill({ color: '#000' }),
+            stroke: new Stroke({ color: '#fff', width: 2 }),
+            offsetY: -20,
+          }),
+        })
+      );
+
+      vectorSource.addFeature(iconFeature);
+    });
+
+    // Update the vector layer
+    this.vectorLayer.setSource(vectorSource);
+  }
+  onSensorChange() {
+    this.updateMarkers();
   }
 }

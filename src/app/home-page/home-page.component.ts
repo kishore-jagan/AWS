@@ -44,9 +44,9 @@ export class HomePageComponent implements OnInit {
 
   buoyLocations = [
     {
-      name: 'AWS 1',
-      coordinates: [80.2705, 13.0843],
-      description: 'Weather Station 1',
+      name: 'ECFS_Ship',
+      coordinates: [82.26975, 13.00475],
+      description: 'ECFS SHIP',
     },
     {
       name: 'AWS 2',
@@ -98,14 +98,20 @@ export class HomePageComponent implements OnInit {
         description: buoy.description,
       });
 
+      let iconSrc = 'assets/aws/weather.svg';
+      if (buoy.name === 'ECFS_Ship') {
+        iconSrc = 'assets/Sagar_Nidhi.png';
+      }
+
       iconFeature.setStyle(
         new Style({
           image: new Icon({
-            src: 'assets/weather-station-svgrepo-com.svg',
-            scale: 0.1,
+            // src: 'assets/aws/aws1.svg',
+            src: iconSrc,
+            scale: 0.2,
           }),
           text: new Text({
-            text: buoy.name,
+            // text: buoy.name,
             font: '12px Arial, sans-serif',
             fill: new Fill({ color: '#000' }),
             stroke: new Stroke({ color: '#fff', width: 2 }),
