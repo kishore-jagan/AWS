@@ -116,6 +116,7 @@ export class AnalyticsComponent implements OnInit {
         this.ecfs1 = data.ecfs;
         this.aws = data.aws;
         this.Tide();
+        this.surfacepolar();
         console.log('aws data', this.aws);
         console.log('ecfs data', this.ecfs1);
       });
@@ -424,5 +425,222 @@ export class AnalyticsComponent implements OnInit {
     });
 
     this.loading = false;
+  }
+
+  surfacepolar(): void {
+    const chartType = this.selectedChart;
+    this.loading = true;
+    const polar1 = document.getElementById('surfacepolar')!;
+
+    const computedStyle = getComputedStyle(document.body);
+    const bgColor = computedStyle
+      .getPropertyValue('--secbackground-color')
+      .trim();
+    const mainText = computedStyle.getPropertyValue('--chart-maintext').trim();
+    const subText = computedStyle.getPropertyValue('--main-text').trim();
+    const text = computedStyle.getPropertyValue('--text-color').trim();
+
+    const surfaceCurrent =
+      this.selectedStation === 'AWS' ? this.aws.map((item) => item.ws_cc) : [];
+
+    const surfaceCurrent2 =
+      this.selectedStation === 'AWS'
+        ? this.aws.map((item) => item.winddir_cc)
+        : [];
+
+    const surfacePolar = this.aws.map((item) => {
+      return { speed: item.ws_cc, direction: item.winddir_cc };
+    });
+
+    const directionLabels = [
+      'N',
+      'NNE',
+      'NE',
+      'ENE',
+      'E',
+      'ESE',
+      'SE',
+      'SSE',
+      'S',
+      'SSW',
+      'SW',
+      'WSW',
+      'W',
+      'WNW',
+      'NW',
+      'NNW',
+    ];
+    const speedCategories = [
+      '<0.5 m/s',
+      '0.5-2 m/s',
+      '2-4 m/s',
+      '4-6 m/s',
+      '6-8 m/s',
+      '>8 m/s',
+    ] as const;
+
+    const speedColors = [
+      '#0000FF',
+      '#3399FF',
+      '#66CCFF',
+      '#FFFF66',
+      '#FF9933',
+      '#FF3300',
+    ]; // Blue to red gradient
+
+    // Type for speed categories
+    type SpeedCategory = (typeof speedCategories)[number];
+
+    // Type for direction bins with each speed category as a key
+    type DirectionBin = Record<SpeedCategory, number>;
+
+    // Function to bin speeds
+    function categorizeSpeed(speed: number): SpeedCategory {
+      if (speed < 0.5) return '<0.5 m/s';
+      if (speed < 2) return '0.5-2 m/s';
+      if (speed < 4) return '2-4 m/s';
+      if (speed < 6) return '4-6 m/s';
+      if (speed < 8) return '6-8 m/s';
+      return '>8 m/s';
+    }
+
+    // Initialize bins
+    const dataBins: DirectionBin[] = directionLabels.map(() => ({
+      '<0.5 m/s': 0,
+      '0.5-2 m/s': 0,
+      '2-4 m/s': 0,
+      '4-6 m/s': 0,
+      '6-8 m/s': 0,
+      '>8 m/s': 0,
+    }));
+
+    // Map directions to labels and fill dataBins with counts
+    surfacePolar.forEach(({ speed, direction }) => {
+      const directionIndex = Math.round(direction / 22.5) % 16;
+      const speedCategory = categorizeSpeed(speed);
+      dataBins[directionIndex][speedCategory] += 1;
+    });
+
+    // Extract data for each speed category to use in series
+    const seriesData = speedCategories.map((speedCategory, index) => ({
+      name: speedCategory,
+      type: 'bar',
+      stack: 'wind-speed',
+      coordinateSystem: 'polar',
+      data: dataBins.map((bin) => bin[speedCategory]),
+      itemStyle: {
+        color: speedColors[index], // Assign color based on speed range
+      },
+    }));
+
+    if (polar1) {
+      const existingInstance = echarts.getInstanceByDom(polar1);
+      if (existingInstance) {
+        existingInstance.dispose();
+      }
+      const windRoseChart1 = echarts.init(polar1);
+
+      // Set up the chart options
+      const option = {
+        // backgroundColor: bgColor,
+        title: {
+          text: 'Wind Rose', // Changed from 'Surface' to 'Low'
+          // left: '1%',
+          top: '18%',
+          textStyle: {
+            color: mainText,
+            fontSize: 20,
+          },
+        },
+
+        polar: {},
+        angleAxis: {
+          type: 'category',
+          data: directionLabels,
+          boundaryGap: true,
+          startAngle: 100,
+          axisLabel: {
+            color: subText, // White axis labels
+          },
+          splitArea: {
+            show: true,
+            areaStyle: {
+              color: ['rgba(255, 255, 255, 0.1)', 'rgba(200, 200, 200, 0.1)'],
+            },
+            axisLine: {
+              lineStyle: {
+                color: subText,
+              },
+            },
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: subText,
+              // type: 'solid'
+            },
+          },
+        },
+        radiusAxis: {
+          min: 0,
+          axisLine: {
+            lineStyle: {
+              color: subText, // White radius axis line
+            },
+          },
+          axisLabel: {
+            color: subText,
+            formatter: '{value}',
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: text,
+              type: 'dashed',
+            },
+          },
+        },
+        tooltip: {
+          trigger: 'item',
+          formatter: '{a}: {c}',
+        },
+        //   toolbox: {
+        //     bottom: 0,
+        //     left:0,
+        //     feature: {
+        //         dataZoom: {
+        //             yAxisIndex: 'none'
+        //         },
+        //         restore: {},
+        //          saveAsImage: {
+        //       backgroundColor: bgColor,
+        //       pixelRatio: 2,
+        //     }
+        //     },
+        //     iconStyle: {
+        //         borderColor: mainText
+        //     }
+        // },
+
+        dataZoom: [
+          {
+            type: 'inside',
+            start: 0,
+            end: 100,
+          },
+        ],
+        series: seriesData,
+        animationDuration: 1000,
+      };
+
+      // Render the chart and handle resizing
+      windRoseChart1.setOption(option);
+      //console.table(dataBins);
+
+      this.loading = false;
+      window.addEventListener('resize', () => windRoseChart1.resize());
+    } else {
+      this.loading = false;
+    }
   }
 }

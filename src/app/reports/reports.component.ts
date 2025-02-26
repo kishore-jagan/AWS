@@ -1,5 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { TableModule } from 'primeng/table';
@@ -40,6 +45,7 @@ interface Column {
   templateUrl: './reports.component.html',
   styleUrl: './reports.component.css',
   providers: [ReportService],
+  // encapsulation: ViewEncapsulation.None,
 })
 export class ReportsComponent implements OnInit {
   selectedStation: string = 'AWS';
@@ -69,8 +75,56 @@ export class ReportsComponent implements OnInit {
   constructor(private sensorService: ReportService) {}
 
   ngOnInit(): void {
-    // this.loading = false;
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+    
+ ::ng-deep .p-datatable-thead{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: var(--background-color) !important;
+ } 
+ ::ng-deep .p-multiselect-chip{
+    background-color: grey !important;
+    color: var(--main-text) !important;
+ }
 
+ ::ng-deep .p-datatable-header{
+    background-color: var(--background-color) !important;
+ }
+ ::ng-deep .p-datatable-thead th{
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+ }
+ ::ng-deep .p-datatable-tbody td{
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+    border-color: rgba(174, 174, 174, 0.186) !important;
+ }
+
+ ::ng-deep .p-paginator{
+    background-color: var(--background-color) !important;
+ }
+      ::ng-deep .multidrop{
+    max-width: 400px !important;
+    background-color: var(--background-color) !important;
+    color: var(--main-text) !important;
+  }
+  ::ng-deep .p-datatable-header{
+    border-radius: 10px 10px 0px 0px;
+  }
+      ::ng-deep p-select .p-select-label{
+    color: var(--main-text) !important;
+  }
+  ::ng-deep .p-inputtext{
+    border-radius: 15px !important;
+    background-color: black !important;
+    color: var(--main-text) !important;
+
+  }
+    `;
+    document.head.appendChild(styleElement);
+    console.log(styleElement);
+    // this.loading = false;
     // this.getSensors().subscribe((status) => {
     //   console.log('Sensor status:', status);
     //   this.loading = true;
